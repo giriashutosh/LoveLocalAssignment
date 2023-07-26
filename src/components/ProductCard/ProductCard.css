@@ -1,0 +1,51 @@
+.card-container{
+    margin: 8px;
+    width : 250px;
+    height: 400px;
+    background-color: #f0f0f0;
+    padding: 8px;
+    border-radius: 20px;
+    box-shadow: 5px 10px #888888;
+    transition: transform 0.2s ease-in-out;
+    color: #333;
+    position: relative;
+}
+
+.card-container > img{
+    width: 90%;
+    height: 60%;
+    mix-blend-mode: multiply;
+}
+/* Define the animation */
+@keyframes bumpout {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.05);
+    }
+  }
+.card-container:hover{
+    cursor: pointer;
+    animation:  bumpout 0.2s ease-in-out;
+}
+
+ /* Add to cart button styling */
+ .add-to-cart-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #1E90FF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .add-to-cart-btn:hover {
+    background-color: #0077FF;
+  }

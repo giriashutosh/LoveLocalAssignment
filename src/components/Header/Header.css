@@ -1,0 +1,26 @@
+.nav-container{
+    display: flex;
+    background-color: aliceblue;
+    justify-content: space-between;
+    padding: 5px;
+    color: #333;
+}
+.logo-container img{
+    width: 100px;
+    height: 80px;
+    mix-blend-mode: multiply;
+}
+.nav-items ul{
+    display: flex;
+    list-style-type: none;
+    
+    
+}
+.nav-items ul li{
+    margin: 8px;
+    text-decoration: none;
+    color: #333;
+}
+.nav-link{
+    text-decoration: none;;
+}
