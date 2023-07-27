@@ -3,13 +3,17 @@ import Header from './components/Header/Header';
 import ProductDetails from './pages/ProductDetails/ProductDetails'
 
 import ProductsList from './components/ProductsList/ProductsList';
-import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Outlet } from "react-router-dom";
+import { ProductContextProvider } from './context/Context';
 function App() {
   return (
+    <ProductContextProvider>
+
     <div className="App">
       <Header/>
       <Outlet/>
     </div>
+    </ProductContextProvider>
   );
 }
 

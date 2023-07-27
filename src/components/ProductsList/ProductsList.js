@@ -2,15 +2,39 @@ import React, { useEffect, useState } from 'react'
 import ProductCard from '../ProductCard/ProductCard';
 import './ProductsList.css'
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { ProductContext } from '../../context/Context';
+import Shimmer from '../ShimmerUI/Shimmer';
 
 const ProductsList = () => {
   const [products, setProducts] = useState([]);
   const [filterProducts, setFilterProducts] = useState([]);
+  const { setData} = useContext(ProductContext);
+  const [page, setPage] = useState(1);
+  const [isPageLoaded, setIsPageLoaded] = useState(false);
 
-  const allCategory = (json) => {
-    setFilterProducts(json)
-  }
-
+  const fetchMoreProducts = async () => {
+    try {
+      console.log("I am called")
+      setIsPageLoaded(true);
+      const response = await fetch(`https://fakestoreapi.com/products?limit=6&page=${page}`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch more products from the API.');
+      }
+      const json = await response.json();
+      console.log(json);
+      setProducts(prevProducts => [...prevProducts, ...json]);
+      setFilterProducts(prevProducts => [...prevProducts, ...json])
+      console.log(products)
+      setData(prevProducts => [...prevProducts, ...json])
+      setPage(prevPage => prevPage + 1);
+      setIsPageLoaded(false);
+    } catch (error) {
+      console.error(error);
+      setIsPageLoaded(false);
+    }
+  };
+  
   const lowToHighPrice = () => {
     const sortedProducts = [...products].sort((a, b) => a.price - b.price);
     setFilterProducts(sortedProducts);
@@ -46,14 +70,30 @@ const ProductsList = () => {
     const json = await response.json();
     setProducts(json)
     setFilterProducts(json)
+    setData(json);
   }
-
+  const handleScroll = () => {
+    const isScrolledToBottom =
+      window.innerHeight + window.scrollY >= document.body.offsetHeight;
+    if (isScrolledToBottom && !isPageLoaded) {
+      fetchMoreProducts();
+    }
+  };
   useEffect(() => {
-    fetchProducts();
-  }, [])
+    fetchMoreProducts()
+  },[])
+  
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [page, isPageLoaded]);
+  
+  
 
   if (products.length === 0) {
-    return <h1>Loading...</h1>
+    return <Shimmer/>
   }
 
   return (
@@ -81,6 +121,7 @@ const ProductsList = () => {
           </Link>
         ))
       }
+      <div id="infinite-scroll-target"></div>
     </div>
   )
 }

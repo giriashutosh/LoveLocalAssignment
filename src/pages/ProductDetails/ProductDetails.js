@@ -26,7 +26,7 @@ const ProductDetails = () => {
 
   useEffect(() => {
     fetchProductDetails();
-  }, []);
+  }, [prod_id]);
   if (Object.keys(product).length === 0) {
     return <h1>Loading...</h1>;
   }

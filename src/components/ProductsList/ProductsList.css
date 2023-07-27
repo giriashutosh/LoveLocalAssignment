@@ -2,6 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 100px;
 }
 .product-link{
     text-decoration: none;
@@ -14,6 +15,7 @@
     margin-bottom: 3px;
     padding-top: 4px;
     padding-right: 3px;
+    margin-right: 60px
 }
 
 .filter-dropdown-container select {
@@ -35,11 +37,12 @@
   
   .filterby{
     padding: 7px;
-    background-color: #ccc;
+    background-color: rgb(231, 101, 123);
+
     font: bold;
     margin-right: 5px;
     margin-bottom: 10px;
     border-radius: 5px;
-    margin-top: 2px;
+    margin-top: 3px;
     
   }

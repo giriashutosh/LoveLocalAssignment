@@ -1,9 +1,18 @@
 .nav-container{
     display: flex;
-    background-color: aliceblue;
+    background-color: rgb(231, 101, 123);
     justify-content: space-between;
     padding: 5px;
     color: #333;
+    position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+    height: 60px;
+}
+.main-content{
+    margin-top: 120px;
 }
 .logo-container img{
     width: 100px;

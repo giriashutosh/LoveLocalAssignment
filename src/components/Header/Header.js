@@ -2,6 +2,7 @@ import React from 'react'
 import './Header.css'
 import Logo from '../../images/logo.jpg'
 import { Link } from 'react-router-dom'
+import SearchBar from '../SearchBar/SearchBar'
 
 const Header = () => {
   return (
@@ -9,6 +10,7 @@ const Header = () => {
         <div className='logo-container'>
             <img src={Logo} alt="logo"/>
         </div>
+        <SearchBar/>
         <div className='nav-items'>
             <ul>
                 <Link to ="/" className='nav-link'><li>Home</li></Link>

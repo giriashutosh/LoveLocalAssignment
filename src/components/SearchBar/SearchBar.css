@@ -1,0 +1,21 @@
+/* SearchBar.css */
+
+/* Container for the search bar */
+.search-container {
+    display: flex;
+    align-items: center;
+    
+  }
+  .search-input{
+    width: 600px;
+    height: 25px;
+    outline: none;
+    border-radius: 5px;
+  }
+  .search-btn{
+    background-color: rgb(229, 70, 97);
+    font-size: 21px;
+    border-radius: 5px;
+  }
+  
+  
