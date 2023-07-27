@@ -6,3 +6,40 @@
 .product-link{
     text-decoration: none;
 }
+.filter-dropdown-container{
+    /* height: 40%; */
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    margin-bottom: 3px;
+    padding-top: 4px;
+    padding-right: 3px;
+}
+
+.filter-dropdown-container select {
+    padding: 8px 12px;
+    font-size: 14px;
+    background-color: #9fa9b8;
+    color: #444;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+    margin-left: auto;
+  }
+
+  .filter-dropdown{
+    margin-left: auto;
+  }
+  
+  .filterby{
+    padding: 7px;
+    background-color: #ccc;
+    font: bold;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    margin-top: 2px;
+    
+  }
