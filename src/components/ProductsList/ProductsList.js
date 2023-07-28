@@ -17,17 +17,18 @@ const ProductsList = () => {
     try {
       console.log("I am called")
       setIsPageLoaded(true);
-      const response = await fetch(`https://fakestoreapi.com/products?limit=6&page=${page}`);
+      const response = await fetch(`https://fakestoreapi.com/products?limit=10&page=${page}`, { cache: "no-cache" });
+      
       if (!response.ok) {
         throw new Error('Failed to fetch more products from the API.');
       }
       const json = await response.json();
       console.log(json);
-      setProducts(prevProducts => [...prevProducts, ...json]);
-      setFilterProducts(prevProducts => [...prevProducts, ...json])
+      setProducts((prevProducts) => [...prevProducts, ...json]);
+      setFilterProducts((prevProducts) => [...prevProducts, ...json])
       console.log(products)
-      setData(prevProducts => [...prevProducts, ...json])
-      setPage(prevPage => prevPage + 1);
+      setData((prevProducts) => [...prevProducts, ...json])
+      setPage((prevPage) => prevPage + 1);
       setIsPageLoaded(false);
     } catch (error) {
       console.error(error);
@@ -66,21 +67,24 @@ const ProductsList = () => {
     } 
   }
   const fetchProducts = async () => {
+    setIsPageLoaded(true)
     const response = await fetch("https://fakestoreapi.com/products");
     const json = await response.json();
+    console.log(json)
     setProducts(json)
     setFilterProducts(json)
     setData(json);
+    setIsPageLoaded(false)
   }
   const handleScroll = () => {
     const isScrolledToBottom =
       window.innerHeight + window.scrollY >= document.body.offsetHeight;
-    if (isScrolledToBottom && !isPageLoaded) {
+    if (isScrolledToBottom && !isPageLoaded && page <= products.length) {
       fetchMoreProducts();
     }
   };
   useEffect(() => {
-    fetchMoreProducts()
+    fetchProducts()
   },[])
   
   useEffect(() => {
