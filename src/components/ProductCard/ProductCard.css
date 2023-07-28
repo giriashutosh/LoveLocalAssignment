@@ -16,7 +16,7 @@
     height: 60%;
     mix-blend-mode: multiply;
 }
-/* Define the animation */
+
 @keyframes bumpout {
     from {
       transform: scale(1);
@@ -30,7 +30,7 @@
     animation:  bumpout 0.2s ease-in-out;
 }
 
- /* Add to cart button styling */
+ 
  .add-to-cart-btn {
     padding: 10px 20px;
     font-size: 16px;
@@ -41,6 +41,7 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
     position: absolute;
+    margin-bottom: 4px;
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
@@ -48,4 +49,9 @@
   
   .add-to-cart-btn:hover {
     background-color: #0077FF;
+  }
+
+  .rating{
+    font-size: 16px;
+    font-weight: bold;
   }

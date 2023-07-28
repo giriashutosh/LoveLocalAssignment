@@ -1,18 +1,17 @@
 import './App.css';
 import Header from './components/Header/Header';
 import ProductDetails from './pages/ProductDetails/ProductDetails'
-
 import ProductsList from './components/ProductsList/ProductsList';
 import { createBrowserRouter, Outlet } from "react-router-dom";
 import { ProductContextProvider } from './context/Context';
+
 function App() {
   return (
     <ProductContextProvider>
-
-    <div className="App">
-      <Header/>
-      <Outlet/>
-    </div>
+      <div className="App">
+        <Header />
+        <Outlet />
+      </div>
     </ProductContextProvider>
   );
 }
@@ -20,15 +19,15 @@ function App() {
 export const appRouter = createBrowserRouter([
   {
     path: '/',
-    element: <App/>,
+    element: <App />,
     children: [
       {
         path: '/',
-        element:<ProductsList/>
+        element: <ProductsList />
       },
       {
         path: '/productdetail/:prod_id',
-        element: <ProductDetails/>
+        element: <ProductDetails />
       }
     ]
   }

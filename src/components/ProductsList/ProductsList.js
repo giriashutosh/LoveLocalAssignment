@@ -121,7 +121,7 @@ const ProductsList = () => {
       {
         filterProducts.map((product) => (
           <Link to={"/productdetail/" + product.id} key={product.id} className='product-link'>
-            <ProductCard id={product.id} title={product.title} image={product.image} price={product.price} />
+            <ProductCard id={product.id} title={product.title} image={product.image} price={product.price} rating={ product.rating.rate} />
           </Link>
         ))
       }

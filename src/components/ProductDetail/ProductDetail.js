@@ -9,7 +9,7 @@ import DetailShimmer from "../ShimmerUI/DetailShimmer";
 
 const ProductDetail = (props) => {
   const [isLoading, setIsLoading] = useState(true)
-  const { id, title, image, price, description, category } = props.product;
+  const { id, title, image, price, description, category,rating } = props.product;
   const { data } = useContext(ProductContext);
   const [similarProducts, setSimilarProducts] = useState([]);
 
@@ -31,7 +31,7 @@ const ProductDetail = (props) => {
   }, [])
   if (isLoading) return <><DetailShimmer /><Shimmer /></>
   return (
-    <>
+    <div className="product-main-container">
       <div className="prod-container">
 
         <div className="product-detail">
@@ -40,8 +40,10 @@ const ProductDetail = (props) => {
           </div>
           <div className="product-info">
             <h1 className="product-title">{title}</h1>
-            <p className="product-description">Description - {description}</p>
+            <h2 className="description">Description :- </h2>
+            <p className="product-description">{description}</p>
             <p className="product-price">Rs {price}/-</p>
+            <p className="rating">{ rating.rate} Stars</p>
             <button className="detail-add-to-cart-btn">Add to Cart</button>
           </div>
 
@@ -53,13 +55,13 @@ const ProductDetail = (props) => {
           {
             similarProducts.map((product) => (
               <Link to={"/productdetail/" + product.id} key={product.id} className='product-link'>
-                <ProductCard id={product.id} title={product.title} image={product.image} price={product.price} />
+                <ProductCard id={product.id} title={product.title} image={product.image} price={product.price} rating={ product.rating.rate} />
               </Link>
             ))
           }
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
