@@ -2,17 +2,26 @@
 body, h1, p, button {
     margin: 0;
     padding: 0;
+   
   }
-  
+  .prod-container {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    height: 500px; /* Set the height of the container to the full viewport height for vertical centering */
+  }
   /* Main container for the product detail page */
   .product-detail {
+    
     max-width: 600px;
-    margin-top: 100px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    margin-left: 20px;
     background-color: #f0f0f0;
     padding: 20px;
     display: flex;
     justify-content: space-between;
-    transform: translateX(75%);
+    
     border-radius: 10px;
     box-shadow: 5px 10px #888888;
   }
@@ -74,6 +83,17 @@ body, h1, p, button {
     
 }
 .heading{
+  
   font-weight: bold;
 }
-  
+
+  /* Media query for responsiveness */
+@media (max-width: 768px) {
+  .prod-container {
+    padding: 20px; /* Add some padding to the container on smaller screens */
+  }
+
+  .product-detail {
+    width: 100%; /* Make the product detail container take the full width on smaller screens */
+  }
+}
